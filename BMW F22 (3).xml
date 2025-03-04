@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- RealDash CAN XML description file, version 2 Requires RealDash version 1.5.8 or newer -->
+<!-- Author : Henri.be 20250212 -->
+<RealDashCAN version="2">
+  <frames>
+  
+    <frame id="0x0A5">    
+      <value targetId="37" offset="5" length="2" 	conversion="V/4"></value> <!-- RPM -->
+      <value targetId="207" offset="16" length="12" units="bit" conversion="V/2-1023.5"></value> <!-- Torque -->
+    </frame> 
+
+    <frame id="0x1F6">    
+		<value targetId="160" units="bit" startbit="4" bitcount="1"></value> <!-- Left Turn -->
+		<value targetId="161" units="bit" startbit="5" bitcount="1"></value> <!-- Right Turn -->
+    </frame> 
+    
+    <frame id="0x3F9">
+      <value targetId="14" offset="4" length="1" units="Deg C"conversion="V-48"/>
+      <value targetId="152" offset="5" length="1" units="Deg C"conversion="V-48"/>
+    </frame>    
+    
+    <frame id="0x2CA">
+      <value targetId="173" offset="0" length="1" units="Deg C"conversion="V-48"/>
+    </frame>
+        
+	<frame id="0x1a1">
+      <value targetId="64" offset="2" length="2" units="Km/h"conversion="V*0.015625"/>
+    </frame>
+   
+    <frame id="0x1EE">
+      <value targetId="155" offset="3" length="1" units="bit"/> 
+      <value targetId="156" offset="4" length="1" units="bit"/>
+      <value targetId="157" offset="5" length="1" units="bit"/>
+    </frame>     
+ </frames>
+</RealDashCAN>
