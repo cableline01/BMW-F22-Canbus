@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RealDashCAN version="2">
+  <frames>
+
+    <!-- ================= ENGINE ================= -->
+
+    <frame canId="0x0A5" length="8">
+      <value targetId="37" offset="5" length="2" rangeMin="0" rangeMax="8000" units="rpm" conversion="V/4"/>  <!-- RPM -->
+      <value targetId="207" startbit="16" bitcount="12" units="nm" conversion="V*0.5-1023.5"/>  <!-- Torque -->
+      <value name="Gearbox Torque" startbit="28" bitcount="12" units="nm" conversion="V*0.5-1023.5"/>  <!-- Gearbox Torque -->
+    </frame>
+
+    <frame canId="0x6F4" length="8">
+      <value name="Charge Air Temp" offset="2" length="1" units="Celsius" rangeMin="-40" rangeMax="150" conversion="V-40"/>  <!-- Charge Air Temp Post Intercooler -->
+    </frame>
+
+    <frame canId="0x3F9" length="8">
+      <value targetId="14" offset="4" length="1" units="Celsius" rangeMin="-32" rangeMax="300" conversion="V-48"/>  <!-- Coolant Temperature -->
+      <value targetId="152" offset="5" length="1" units="Celsius" rangeMin="-32" rangeMax="300" conversion="V-48"/>  <!-- Engine Oil Temperature -->
+    </frame>
+
+    <frame canId="0x0D9" length="8">
+      <value targetId="42" startbit="32" bitcount="12" units="%" rangeMin="0" rangeMax="100" conversion="V/40"/>  <!-- Throttle Position -->
+      <value targetid="84" offset="0" length="2" endian="little" scale="0.1"/> <!-- Boost in PSI -->
+    </frame>
+
+    <frame canId="0x397" length="8">
+      <value targetId="100" offset="2" length="2" units="%" rangeMin="0" rangeMax="100" conversion="V-65310"/>  <!-- Engine Load -->
+    </frame>
+
+    <!-- ================= VEHICLE ================= -->
+  
+    <frame canId="0x1F6" length="8">
+      <value targetId="160" units="bit" startbit="4" bitcount="1"/>	<!-- Turn Signal Left -->	
+      <value targetId="161" units="bit" startbit="5" bitcount="1"/> <!-- Turn Signal Right -->
+    </frame>
+
+    <frame canId="0x21A" length="8">
+      <value targetId="157" units="bit" startbit="1" bitcount="1"/> <!-- High Beam -->
+      <value targetId="156" units="bit" startbit="13" bitcount="1"/> <!-- Low Beam -->	
+    </frame>
+
+    <frame canId="0x2CA" length="8">
+      <value targetId="173" offset="0" length="1" units="Celsius" rangeMin="-32" rangeMax="200" conversion="V*0.5-40"/> <!-- Ambient Temperature -->
+    </frame>
+
+    <frame canId="0x1A1" length="8">
+      <value targetId="64" offset="2" length="2" units="KPH" rangeMin="0" rangeMax="160" conversion="V*0.015625"/> <!-- Vehicle Speed -->
+    </frame>
+	
+    <frame canId="0x289" length="8">
+      <value targetId="171" offset="6" length="2" conversion="V"/> <!-- Cruise Control Set Value -->
+      <value name="Cruise Set" offset="2" length="1"/> <!-- Cruise Control Active -->
+    </frame>
+
+    <frame canId="0x12F" length="8">
+      <value targetId="154" units="bit" startbit="44" bitcount="1"/> <!-- Start Stop Button -->
+    </frame>
+   
+    <frame canId="0x28f" length="8">
+      <value name="Speed Limit sign detection" offset="0" length="1" enum="129:5,130:10,131:15,132:20,133:25,134:30,135:35,136:40,137:45,138:50,139:55,140:60,141:65,142:70,143:75,144:80,145:85,146:90,147:95,148:100,#:--"/>  <!-- Speed Limit sign detection -->
+    </frame>
+  
+    <frame canId="0x1C6" length="8">
+      <value name="Cruise Set Speed" targetId="171" offset="1" length="1" conversion="V-54"/> <!-- Cruise Control Set Value -->	
+    </frame>
+
+    <frame canId="0x327" length="8">
+      <value name="Lane Departure" offset="2" length="1"/> <!-- Lane Departure -->			
+    </frame>
+  
+    <frame canId="0x1EE" length="8">
+      <value name="BC button" startbit="6" bitcount="1"/>  <!-- BC button-->	
+    </frame>
+     
+    <frame canId="0x581" length="8">
+      <value targetId="168" startbit="24" bitcount="1"/> <!-- Seat Belt Warning -->
+    </frame>
+
+    <frame canId="0x281" length="8">
+      <value targetId="12" offset="0" length="2" conversion="(V &amp; 0xfff) / 68"/> <!-- Battery Voltage -->
+    </frame>
+
+    <frame canId="0x302" length="8">
+      <value targetId="229" offset="2" length="2" conversion="V/22.75-1440"/>  <!-- Steering Angle -->
+    </frame>
+  
+    <frame canId="0x2FC" length="8">
+      <value targetId="482" units="bit" startbit="10" bitcount="1"/> <!-- Drivers Door -->
+      <value targetId="481" units="bit" startbit="8" bitcount="1"/> <!-- Passanger Door -->
+      <value targetId="487" units="bit" startbit="16" bitcount="1"/> <!-- Hood -->
+      <value targetId="163" units="bit" startbit="17" bitcount="1"/> <!--Trunk -->
+    </frame>
+
+    <frame canId="0x202" length="8">
+      <value targetId="274" offset="0" length="1" conversion="V/2.55"/>  <!-- Dashboard Brightness -->
+    </frame>
+
+    <!-- ================= TRANSMISSION ================= -->
+	
+    <frame canId="0x0F3" length="8">
+      <value targetId="141" startbit="40" bitcount="4" enum="0:P,1:N,2:R,4:D,5:1,6:2,7:3,8:4,9:5,10:6,11:7,12:8"/>/> <!-- Gear Letter -->
+    </frame>
+
+    <frame canId="0x3A7" length="8">
+      <value name="DriveMode" offset="4" length="1" enum="37:SPORT PLUS,36:SPORT,19:COMFORT,71:ECO PRO,17:T/C OFF,38:DSC OFF,#:Error"/> <!-- Drive Mode -->
+    </frame>
+  
+    <frame canId="0x39A" length="8">
+      <value name="Normal/Sport" offset="3" length="1" enum="21:1,22:2,23,3,24:4,25:5,26:6,27:7,28:8,#:_"/> <!-- Transmission State -->		
+      <value name="Dynamic Adaptations State" offset="6" length="1"/> <!-- Dynamic Adaptations State -->
+      <value name="Manual shift" startbit="45" bitcount="1" units="bits" enum="0:_,1:Manual"/> <!-- Manual shift -->
+      <value targetId="138" offset="1" length="1" units="Celsius" rangeMin="-32" rangeMax="300" conversion="V-48"/> <!-- Oil Temperature (Transmission) -->
+    </frame>
+
+    <!-- ================= FUEL ================= -->
+
+    <frame canId="0x330" length="8">
+      <value name="Fuel Range" startbit="48" bitcount="16" units="bits" conversion="V/16*0.5213711922"/> <!-- Fuel Range -->	
+      <value targetId="170" offset="4" length="2" units="%" conversion="(B0 + B1) + 19"/> <!-- Fuel Level -->	
+      <value targetId="310" offset="0" length="3"/> <!-- Odometer-->
+    </frame>
+   
+    <frame canId="0x362" length="8">
+      <value name="Average Fuel Consumption" offset="0" length="2" conversion="235.215 / (((B0 * 256) + B1) * 0.1)"/> <!-- Average Fuel Consumption -->
+    </frame>
+
+    <frame canId="0x2C4" length="8">
+      <value name="Instantaneous Fuel Consumption" offset="0" length="2" units="l/100km" conversion="((B0*256)+B1)*0.1"/> <!-- Fuel Consumption (Instant) -->
+    </frame>
+  
+    <frame canId="0x0EC" length="8">
+      <value name="Ethanol Content %" offset="0" length="1"/> <!-- Ethanol Content % -->
+      <value targetId="499" offset="1" length="1"/> <!-- Ethanol Content temp -->
+    </frame>
+	
+    <!-- ================= WARNING / STATUS FLAGS ================= -->
+
+    <frame id="0x336" length="8">
+      <value targetId="248" offset="1" length="1" enum="0:_,3:Ignition ON,14:Passenger Door Open,15:Driver Door Open,18:Hood Open,19:Low Fuel,28:Engine Oil Level Low,29:Engine Fault - Reduced Power,30:Engine! Stop vehicle carefully,34: ,35:Fuel Cap Loose,36:DSC/ABS Error,39:OVERHEATING STOP NOW,40:Press Brake to Start,41:Service Due,46:Fasten Seat Belt,55:Parking Brake On,63:Check Tire,66:Keyfob Not Detected,74:Brake Fluid Low,79:Low External Temperature,116:Left Blinker Failed,124:Right Blinker Failed,133:Right Rear Light Failure,164:Windshield Fluid Low,166:Coolant Low,168:Transmission Malfunction,205:Press Brake To Select Gear,275:Low Fuel,281:Service Due,284:Service Overdue,281:Service Due,402:Apply Foot Brake275:Low Fuel,281:Service Due,284:Service Overdue,281:Service Due,402:Apply Foot Brake"/>
+      <value targetId="248" offset="2" length="1" enum="0:_,275:Low Fuel,281:Service Due,284:Service Overdue,281:Service Due,402:Apply Foot Brake"/>
+     </frame>
+
+    <frame canId="0x1B4" length="8">
+      <value targetId="65" offset="5" length="1" bitmask="0x02"/> <!-- Check Eng -->
+    </frame>
+
+    <!-- ============== MISC ================ -->
+
+    <frame canId="0x173" length="8">
+      <value targetId="273" offset="3" length="2"/> <!-- ABS Warning --> 
+      <value name="WheelSlip" startbit="6" bitcount="5"/> <!-- Wheel Slip -->
+    </frame>
+ 
+    <frame canId="0x0EF" length="8">
+      <value name="Brake Pressed" offset="3" length="1" conversion="(V-125)* -1"/> <!-- Brake Pressed -->
+    </frame>
+  
+    <frame canId="0x34F" length="8">
+      <value targetId="164" startbit="0" bitcount="1" units="bits"/> <!-- Emergency Brake -->
+    </frame>
+
+    <frame canId="0x199" length="8">
+      <value targetId="6" offset="2" length="2" conversion="(V*-0.0002)+6.4859"/> <!-- Acceleration X -->
+    </frame>
+
+    <frame canId="0x19A" length="8">
+      <value targetId="7" offset="2" length="2" conversion="(V*-0.0002)+6.4859"/> <!-- Acceleration Y -->
+    </frame>
+
+    <frame canId="0x34A" length="8">
+      <value targetId="23" offset="0" length="4" conversion="V/11930464.7-360"/> <!-- GPS Longitude -->
+      <value targetId="22" offset="4" length="4" conversion="V/11930464.7"/> <!-- GPS Latitude -->
+    </frame>
+
+    <frame id="0x34C" length="8" endianness="big">
+      <value targetId="209" name="BMW_GPS_Heading" offset="0" length="2" conversion="V/10" units="deg" />
+      <value targetId="21" name="BMW_GPS_Altitude" offset="2" length="2" conversion="V" units="m" />
+    </frame>
+
+    <frame id="0x2F8" length="8" endianness="big">
+      <value name="BMW_Clock_Hour" offset="3" length="1" conversion="V" />
+      <value name="BMW_Clock_Minute" offset="4" length="1" conversion="V" />
+      <value name="BMW_Clock_Second" offset="5" length="1" conversion="V" />
+      <value name="BMW_Clock_Day" offset="2" length="1" conversion="V" />
+      <value name="BMW_Clock_Month" offset="1" length="1" conversion="V" />
+      <value name="BMW_Clock_Year" offset="0" length="1" conversion="V+2000" />
+</frame>
+
+  </frames>
+</RealDashCAN>

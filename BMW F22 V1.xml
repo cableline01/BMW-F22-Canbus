@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RealDashCAN version="2">
+  <frames>
+    <frame id="0x0A5">
+      <value name="Car RPM" offset="5" length="2" conversion="V/4"/> <!-- RPM -->
+      <value name="Torque" offset="16" length="12" units="bit" conversion="V/2-1023.5"/> <!-- Torque -->
+      <value name="Engine Load" offset="16" length="16" conversion="(B3*256+B2)/10"/>
+      <value name="Actual Torque" offset="32" length="16" conversion="(B5*256+B4)/10"/>
+    </frame>
+    <frame id="0x2c5">
+      <value name="Instant MPG" offset="2" length="2" converson="V*.001"/> <!-- mpg -->
+    </frame>
+      <frame id="0x0AF">
+      <value name="Intake Air Temp"  offset="4" length="1" units="Deg C" conversion="V-40"/> <!-- Intake Air Temp Post Intercooler -->
+      <value name="Boost PSI" offset="5" length="2" units="PSI" conversion="(V*0.0145)-14.7" endianness="big"/> <!--  Turbo Boost PSI -->
+    </frame>
+    <frame canId="0x18D">
+      <value name="Boost Target" offset="0" length="2" endianness="big" units="PSI" conversion="(V*0.0145)-14.7"/> <!-- Boost Target -->  
+    </frame>
+    <frame id="0x1F6">
+      <value name="Turn Left" units="bit" startbit="4" bitcount="1"/> <!-- Turn Signal Left -->
+      <value name="Turn Right" units="bit" startbit="5" bitcount="1"/> <!-- Turn Signal Right -->
+    </frame>
+    <frame id="0x3F9">
+      <value name="Coolant Temp" offset="4" length="1" units="Deg C" conversion="V-48"/> <!-- Coolant Temp -->
+      <value name="Oil Temp" offset="5" length="1" units="Deg C" conversion="V-48"/> <!-- Oil Temp -->
+    </frame>
+    <frame id="0x2CA">
+     <value name="outsidetemp" offset="0" length="1" units="Deg C" conversion="V*0.5-40"/> <!-- Outside Temp -->
+    </frame>
+    <frame id="0x1a1">
+      <value name="Car Speed" offset="2" length="2" units="Km/h" conversion="V*0.015625"/> <!-- Vehicle Speed -->
+    </frame>
+      <frame id="0x0DC">
+      <value name="Shifter Mode" offset="5" length="8" enum="232:DRIVE,228:S/M,"/> <!-- Shifter Mode -->
+    </frame>
+		  <frame canId="0x21A">
+			<value name="HighBeams" units="bit" startbit="1" bitcount="1"></value> <!-- High Beams -->
+			<value name="HeadLights on" units="bit" startbit="13" bitcount="1"></value> <!-- Headlights On -->
+		</frame>
+     <frame id="0x3A7">
+      <value name="DriveMode" offset="4" bitcount="8" enum="37:SPORT +,36:SPORT,19:COMFORT,71:ECO PRO,17:T/C OFF,38:DSC OFF"/> <!-- Drive Mode -->
+    </frame>
+      <frame id="0x12F">
+      <value name="Stop/Start" startbit="44" bitcount="1"></value> <!-- Stop/start Mode -->
+    </frame>
+      <frame id="0x330">
+      <value name="FuelRange" startbit="48" bitcount="16" units="bits"conversion="V/16*0.6213711922"/> <!-- Fuel Range -->
+      <value name="Gas Guage" offset="4" length="2" conversion="B0 + B1" /> <!--Fuel level-->
+      <value name="Odometer" bitcount="24" units="bits"/> <!-- Odometer -->
+    </frame>
+      <frame id="0x0F3">
+      <value name="Current Gear" startbit="40" bitcount="4" rangeMin="0" rangeMax="12" enum="0:P,1:N,2:R,4:P,5:1,6:2,7:3,8:4,9:5,10:6,11:7,12:8"/> <!-- Gear -->
+      <value name="MHD" startbit="16" bitcount="8" rangeMin="0" rangeMax="25" enum="0:MHD,6:MHD MAP 1,12:MHD MAP 2,18:MHD MAP 3,25:MHD MAP 4"/> <!-- MHD MAP -->
+      <value name="Launch Control LaunchActive" startbit="44" bitcount="2" rangeMin="0" rangeMax="2" enum="0:Inactive,1:Preload,2:LaunchActive"/> <!-- Launch Control LaunchActive -->  
+    </frame> 
+      <frame id="0x0EC">
+      <value name="ECA %" offset="0" length="1"></value> <!-- ECA sensor % -->
+      <value name="ECA Temp" offset="1" length="1"></value> <!-- ECA sensor Temp -->
+    </frame>
+      <frame id="0x581">
+      <value name="Seatbelt Warning" startbit="1" bitcount="1" units="bits" /> <!-- Seatbelt warning -->
+    </frame>
+      <frame id="0x287">
+      <value name="Speed Limit" offset="0" length="2"  units="MPH" conversion="V/51.222"/> <!-- Speed limit sign -->
+    </frame>
+     <frame id="0x289">
+       <value name="Cruise Speed" offset="6" length="2" conversion="V/16.417910448" /> <!-- Cruise control speed -->
+       <value name="Cruise Active" offset="2" length="1" /> <!--  Cruise control Light -->
+    </frame>
+      <frame id="0x327">
+      <value name="Lane Departure" offset="2" length="1"/> <!-- Lane depature waring-->
+      <value name="Collision Warning" offset="4" length="1"/> <!-- Ped waring-->
+
+</frame>
+  </frames>
+</RealDashCAN>
